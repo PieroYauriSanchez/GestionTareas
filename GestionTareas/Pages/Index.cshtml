@@ -1,0 +1,91 @@
+﻿@page
+@model Pages.IndexModel
+@{
+    ViewData["Title"] = "Gestión de Tareas";
+    Layout = "_Layout";
+}
+
+<div id="mensaje"></div>
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <span>.</span>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTarea">
+            <i class="fa fa-edit"></i> Nueva Tarea
+        </button>
+    </div>
+    <div class="kanban-board">
+        <div class="kanban-column">
+            <h5 class="kanban-header bg-primary text-white text-center">Pendiente</h5>
+            <div class="kanban-body card-body-pendiente" id="ListaTareasPendiente">
+            </div>
+        </div>
+        <div class="kanban-column">
+            <h5 class="kanban-header bg-warning text-white text-center">En Proceso</h5>
+            <div class="kanban-body card-body-proceso" id="ListaTareasProceso">
+            </div>
+        </div>
+        <div class="kanban-column">
+            <h5 class="kanban-header bg-success text-white text-center">Completadas</h5>
+            <div class="kanban-body card-body-completado" id="ListaTareasCompletado">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalTarea" tabindex="-1" aria-labelledby="modalTareaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title" id="modalTareaLabel">Registrar / Editar Tarea</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formTarea" method="post">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="titulo" class="form-label fw-bold">Titulo <span class="text-danger">*</span></label>
+                            <input type="text" id="titulo" name="Titulo" class="form-control" placeholder="Ejm: Elaboración de cronograma" />
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="descripcion" class="form-label fw-bold">Descripción</label>
+                            <textarea id="descripcion" name="Descripcion" class="form-control" rows="3" placeholder="Descripción de la tarea"></textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="fechaVencimiento" class="form-label fw-bold">Fecha de vencimiento</label>
+                            <input type="date" id="fechaVencimiento" name="FechaVencimiento" class="form-control" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="usuarioAsignado" class="form-label fw-bold">Asignar a</label>
+                            <select id="usuarioAsignado" name="IdUsuarioAsignado" class="form-select">
+                                <option value="">Seleccionar</option>
+                                @if (Model.ListaUsuarios != null && Model.ListaUsuarios.Count > 0)
+                                {
+                                    @foreach (var usuario in Model.ListaUsuarios)
+                                    {
+                                        <option value="@usuario.IdUsuario">@(usuario.Nombres + " " + usuario.Apellidos)</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="estado" class="form-label fw-bold">Estado</label>
+                            <select id="estado" name="Estado" class="form-select">
+                                <option value="1">Pendiente</option>
+                                <option value="2">En Proceso</option>
+                                <option value="3">Completado</option>
+                            </select>
+                        </div>
+                        <input type="hidden" name="IdTarea" id="idTarea" value="0" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
+                <button type="submit" form="formTarea" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/gestiontarea.js"></script>

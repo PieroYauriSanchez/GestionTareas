@@ -1,0 +1,167 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/*body {
+  margin-bottom: 60px;
+}*/
+
+.kanban-board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-around;
+}
+
+.kanban-column {
+    flex: 1 1 300px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.kanban-header {
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    font-weight: 600;
+}
+
+.kanban-body {
+    padding: 1rem;
+    min-height: 250px;
+}
+
+.tarea-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid var(--color);
+}
+
+    .tarea-card h6 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .tarea-card small {
+        color: #6c757d;
+    }
+
+@media (max-width: 768px) {
+    .kanban-board {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/*.card-body-pendiente {
+    background: lightblue;
+}
+
+.card-body-proceso {
+    background: lightyellow;
+}
+
+.card-body-completado {
+    background: lightgreen;
+}*/
+
+/* Contenedor principal */
+#tasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Estilo de cada tarjeta */
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    max-width: 300px; /* Puedes ajustar el ancho máximo según lo desees */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 12px;
+}
+
+/* Fila para el nombre de la tarea y el botón de editar */
+.card-row-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+    /* Nombre de la tarea */
+    .card-row-name h3 {
+        font-size: 18px;
+        margin: 0;
+        font-weight: 600;
+        flex: 1;
+    }
+
+/* Descripción y asignado */
+.card-row-description {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+    /* Descripción de la tarea */
+    .card-row-description p {
+        font-size: 14px;
+        color: #777;
+        margin: 0;
+    }
+
+/* Estilo del botón de editar */
+button {
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+    button i {
+        margin-left: 5px; /* Espacio entre el texto y el ícono */
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+/* Íconos */
+.icon {
+    font-size: 18px;
+    cursor: pointer;
+}
